@@ -1,0 +1,35 @@
+package:
+  name: deeplabcut-desktop
+  version: 0.0.1
+
+source:
+  path: .
+
+build:
+  number: 0
+  skip: true  # [not linux]
+
+requirements:
+  run:
+    - deeplabcut
+    - wxpython
+    - conda
+
+test:
+  commands:
+    - echo No valuable test. Requires desktop interaction.
+
+about:
+  home: https://github.com/ramonaoptics/deeplabcut-desktop-feedstock
+  summary: Desktop launchers for DeepLabCut when installed in linux
+  description: |
+    This will create a desktop launcher for DeepLabCut. The launcher will override
+    other installed DeepLabCut launchers.
+  license: BSD-3-Clause
+  license_family: BSD
+  license_file: LICENSE
+
+extra:
+  recipe-maintainers:
+    - hmaarrfk
+
