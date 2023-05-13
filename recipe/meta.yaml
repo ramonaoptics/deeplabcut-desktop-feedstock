@@ -1,6 +1,6 @@
 package:
   name: deeplabcut-desktop
-  version: 0.0.1
+  version: 0.0.2
 
 source:
   path: .
@@ -11,9 +11,12 @@ build:
 
 requirements:
   run:
-    - deeplabcut
-    - wxpython
-    - conda
+    - deeplabcut >=2.3.4
+    - pyside6
+    - napari-deeplabcut
+    # Sigh, this will pull in all of pyqt5...
+    # https://github.com/conda-forge/napari-feedstock/issues/47
+    - napari
 
 test:
   commands:

@@ -32,10 +32,26 @@ if [[ "$(uname -s)" != "Linux" ]]; then
 fi
 
 PREFIX="${PREFIX:-${CONDA_PREFIX}}"
-CONDA_DEEPLABCUT_DESKTOP="${PREFIX}/share/applications/Deeplabcut.desktop"
+CONDA_DEEPLABCUT_DESKTOP="$(mktemp -d)"/deeplabcut.desktop
 
 XDG_DATA_HOME="${XDG_DATA_HOME:="$HOME/.local/share"}"
 DESKTOP_FILE_DIRECTORY="${XDG_DATA_HOME}/applications"
 
+CONDA_EXE="${CONDA_EXE:=$(which conda)}"
+
+cat >"${CONDA_DEEPLABCUT_DESKTOP}" <<EOF
+[Desktop Entry]
+Name=DeepLabCut
+Version=1.0
+Terminal=false
+Type=Application
+Icon=${PREFIX}/deeplabcut/logo_transparent.png
+TryExec=${PREFIX}/bin/deeplabcut
+Exec="${CONDA_EXE}" run --prefix "${PREFIX}" "${PREFIX}/bin/deeplabcut"
+Categories=Development;
+StartupWMClass=deeplabcut
+EOF
+
 # Don't fail if this command doesn't exist
 desktop-file-install --dir="${DESKTOP_FILE_DIRECTORY}" "${CONDA_DEEPLABCUT_DESKTOP}" || exit 0
+
