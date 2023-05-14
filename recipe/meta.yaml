@@ -6,13 +6,14 @@ source:
   path: .
 
 build:
-  number: 0
+  number: 1
   skip: true  # [not linux]
 
 requirements:
   run:
     - deeplabcut >=2.3.4
-    - pyside6
+    # PySide6 is just too experimental at the moment
+    - pyside2
     - napari-deeplabcut
     # Sigh, this will pull in all of pyqt5...
     # https://github.com/conda-forge/napari-feedstock/issues/47

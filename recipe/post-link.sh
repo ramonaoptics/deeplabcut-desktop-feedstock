@@ -47,7 +47,7 @@ Terminal=false
 Type=Application
 Icon=${PREFIX}/deeplabcut/logo_transparent.png
 TryExec=${PREFIX}/bin/deeplabcut
-Exec="${CONDA_EXE}" run --prefix "${PREFIX}" "${PREFIX}/bin/deeplabcut"
+Exec=QT_API=PySide2 "${CONDA_EXE}" run --prefix "${PREFIX}" "${PREFIX}/bin/deeplabcut"
 Categories=Development;
 StartupWMClass=deeplabcut
 EOF
